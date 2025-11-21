@@ -4,7 +4,7 @@ const path = require('path');                        // helps with directory pat
 const expressLayouts = require('express-ejs-layouts'); // for using layout.ejs
 const methodOverride = require('method-override');   // needed to use PUT/DELETE
 const dotenv = require('dotenv');                    // loads .env file
-dotenv.config();                                     // actually load the values
+dotenv.config();                                     // load the values
 
 const connectDB = require('./config/db');            // our db connection file
 
