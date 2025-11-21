@@ -1,0 +1,18 @@
+<h2>Edit Workout</h2> <!-- page heading so user knows they're editing an existing workout -->
+
+<form action="/workouts/edit/<%= workout._id %>?_method=PUT" method="POST" class="mt-4"> <!-- form submits to the edit route... _method=PUT lets us fake a PUT request -->
+
+    <label>Title</label> <!-- label for workout title -->
+    <input type="text" name="title" value="<%= workout.title %>" class="form-control" required> <!-- text input pre-filled with the current workout title -->
+
+    <label class="mt-3">Category</label> <!-- label for workout category with some spacing -->
+    <input type="text" name="category" value="<%= workout.category %>" class="form-control" required> <!-- category input pre-filled with existing value -->
+
+    <label class="mt-3">Duration (minutes)</label> <!-- label for workout duration -->
+    <input type="number" name="duration" value="<%= workout.duration %>" class="form-control" required> <!-- number input already filled with the workout’s duration -->
+
+    <label class="mt-3">Notes</label> <!-- label for notes textarea -->
+    <textarea name="notes" class="form-control"><%= workout.notes %></textarea> <!-- textarea pre-filled with the workout’s notes -->
+
+    <button class="btn btn-primary mt-4">Update Workout</button> <!-- blue button to submit updated data -->
+</form>

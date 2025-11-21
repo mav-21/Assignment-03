@@ -1,0 +1,29 @@
+<h2 class="mb-4">All Workouts</h2> <!-- section title with margin-bottom to give spacing -->
+
+<table class="table table-striped"> <!-- bootstrap table with zebra stripes for readability -->
+    <tr> <!-- table header row -->
+        <th>Title</th> <!-- column for workout title -->
+        <th>Category</th> <!-- column for workout type/category -->
+        <th>Duration</th> <!-- column for how long the workout lasted -->
+        <th>Date</th> <!-- column for when the workout happened -->
+        <th>Actions</th> <!-- column for edit/delete buttons -->
+    </tr>
+
+    <% workouts.forEach(w => { %> <!-- loops through all workouts passed from the server -->
+        <tr> <!-- one table row per workout -->
+            <td><%= w.title %></td> <!-- prints the workout title -->
+            <td><%= w.category %></td> <!-- prints the category (like cardio/strength/etc.) -->
+            <td><%= w.duration %> mins</td> <!-- prints workout length + “mins” -->
+            <td><%= w.date.toDateString() %></td> <!-- formats the date into a readable string -->
+            <td> <!-- action buttons cell -->
+                <a href="/workouts/edit/<%= w._id %>" class="btn btn-warning btn-sm">Edit</a> <!-- small yellow edit button linking to edit page -->
+
+                <form action="/workouts/delete/<%= w._id %>?_method=DELETE" method="POST" style="display:inline;"> <!-- form for delete request using method override -->
+                    <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this workout?')">
+                        Delete <!-- red delete button with confirm popup -->
+                    </button>
+                </form>
+            </td>
+        </tr>
+    <% }) %> <!-- closes the forEach loop -->
+</table> <!-- end of table -->
